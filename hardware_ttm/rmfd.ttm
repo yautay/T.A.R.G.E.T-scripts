@@ -1,0 +1,35 @@
+define r_top_1 R_SHIFT + L_SHIFT + '1'
+define r_top_2 R_SHIFT + L_SHIFT + '2'
+define r_top_3 R_SHIFT + L_SHIFT + '3'
+define r_top_4 R_SHIFT + L_SHIFT + '4'
+define r_top_5 R_SHIFT + L_SHIFT + '5'
+
+define r_btm_1 R_SHIFT + L_CTL + '1'
+define r_btm_2 R_SHIFT + L_CTL + '2'
+define r_btm_3 R_SHIFT + L_CTL + '3'
+define r_btm_4 R_SHIFT + L_CTL + '4'
+define r_btm_5 R_SHIFT + L_CTL + '5'
+
+define r_lft_1 R_SHIFT + L_ALT + '1'
+define r_lft_2 R_SHIFT + L_ALT + '2'
+define r_lft_3 R_SHIFT + L_ALT + '3'
+define r_lft_4 R_SHIFT + L_ALT + '4'
+define r_lft_5 R_SHIFT + L_ALT + '5'
+
+define r_rig_1 R_SHIFT + R_ALT + '1'
+define r_rig_2 R_SHIFT + R_ALT + '2'
+define r_rig_3 R_SHIFT + R_ALT + '3'
+define r_rig_4 R_SHIFT + R_ALT + '4'
+define r_rig_5 R_SHIFT + R_ALT + '5'
+
+define r_gain_up R_SHIFT + L_SHIFT + '7'
+define r_gain_down R_SHIFT + L_SHIFT + '8'
+
+define r_sym_up R_SHIFT + L_CTL + '7'
+define r_sym_down R_SHIFT + L_CTL + '8'
+
+define r_brt_up R_SHIFT + L_ALT + '7'
+define r_brt_down R_SHIFT + L_ALT + '8'
+
+define r_con_up R_SHIFT + R_ALT + '7'
+define r_con_down R_SHIFT + R_ALT + '8'

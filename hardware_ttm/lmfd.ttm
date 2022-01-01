@@ -1,0 +1,35 @@
+define l_top_1 L_SHIFT + '1'
+define l_top_2 L_SHIFT + '2'
+define l_top_3 L_SHIFT + '3'
+define l_top_4 L_SHIFT + '4'
+define l_top_5 L_SHIFT + '5'
+
+define l_btm_1 L_CTL + '1'
+define l_btm_2 L_CTL + '2'
+define l_btm_3 L_CTL + '3'
+define l_btm_4 L_CTL + '4'
+define l_btm_5 L_CTL + '5'
+
+define l_lft_1 L_ALT + '1'
+define l_lft_2 L_ALT + '2'
+define l_lft_3 L_ALT + '3'
+define l_lft_4 L_ALT + '4'
+define l_lft_5 L_ALT + '5'
+
+define l_rig_1 R_ALT + '1'
+define l_rig_2 R_ALT + '2'
+define l_rig_3 R_ALT + '3'
+define l_rig_4 R_ALT + '4'
+define l_rig_5 R_ALT + '5'
+
+define l_gain_up L_SHIFT + '7'
+define l_gain_down L_SHIFT + '8'
+
+define l_sym_up L_CTL + '7'
+define l_sym_down L_CTL + '8'
+
+define l_brt_up L_ALT + '7'
+define l_brt_down L_ALT + '8'
+
+define l_con_up R_ALT + '7'
+define l_con_down R_ALT + '8'

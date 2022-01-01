@@ -1,0 +1,197 @@
+include "target.tmh"
+include "DCS.ttm"
+include "lmfd.ttm"
+
+int throttle_curve;
+
+//program startup
+int main()
+{
+    if(Init(&EventHandle)) return 1; // declare the event handler, return on error
+	
+	MapAxis(&Joystick, JOYX, DX_X_AXIS);
+	MapAxis(&Joystick, JOYY, DX_Y_AXIS);
+	MapAxis(&Throttle, THR_LEFT, DX_ZROT_AXIS);
+	MapAxis(&Throttle, THR_RIGHT, DX_Z_AXIS);
+	MapAxis(&Throttle, SCX, DX_XROT_AXIS);
+	MapAxis(&Throttle, SCY, DX_YROT_AXIS);
+	MapAxis(&Throttle, THR_FC, DX_SLIDER_AXIS);
+	
+	SetSCurve(&Joystick, JOYX, 0, 3, 0, 3, 0);
+	SetSCurve(&Joystick, JOYY, 0, 3, 0, 3, 0);
+	
+	throttle_curve = LIST(0,0, 10,6, 20,19, 30,25, 40,35, 50,43, 60,57, 70,67, 80,80, 90,90, 100,100);
+	
+	SetCustomCurve(&Throttle, THR_LEFT, throttle_curve);
+	SetCustomCurve(&Throttle, THR_RIGHT, throttle_curve);
+	
+	SetSCurve(&Throttle, SCX, 0, 5, 0, 0, -10);
+	SetSCurve(&Throttle, SCY, 0, 5, 0, 0, -10);
+	
+	MapKey(&Throttle, PSB, 
+		EXEC(
+			"SetSCurve(&Joystick, JOYX, 0, 3, 0, 3, -5);"
+			"SetSCurve(&Joystick, JOYY, 0, 3, 0, 3, -5);"
+		)
+	);
+	
+	MapKey(&Throttle, PSF, 
+		EXEC(
+			"SetSCurve(&Joystick, JOYX, 0, 3, 0, 3, 0);"
+			"SetSCurve(&Joystick, JOYY, 0, 3, 0, 3, 0);"
+		)
+	);
+	
+	//*********************************************
+	//Throttle Key Mappings
+	//*********************************************
+	
+	//Controlsurfaces
+	
+	MapKey(&Throttle, FLAPU, PULSE + Flaps_auto);
+	MapKey(&Throttle, FLAPM, PULSE + Flaps_half);
+	MapKey(&Throttle, FLAPD, PULSE + Flaps_full);
+	
+	MapKey(&Throttle, SPDF, Speedbreak_forward);
+	MapKey(&Throttle, SPDB, Speedbreak_back);
+	
+	MapKey(&Throttle, RDRNRM, PULSE + Gear_up);
+	MapKey(&Throttle, RDRDIS, PULSE + Gear_down);
+	
+	MapKey(&Throttle, EACON, PULSE + Hook_up);
+	MapKey(&Throttle, EACOFF, PULSE + Hook_down);
+	
+	//Master Arms
+	
+	MapKey(&Throttle, APDIS, TEMPO(Master_safe, Master_arm, 3000));
+	MapKey(&Throttle, APPAT, PULSE + Master_mode_aa);
+	MapKey(&Throttle, APAH, PULSE + Master_safe);
+	MapKey(&Throttle, APALT, PULSE + Master_mode_ag);
+	
+	
+	//Mic switch
+	MapKey(&Throttle, MSU, Comm_1);
+	MapKey(&Throttle, MSR, SRS_2);
+	MapKey(&Throttle, MSD, Comm_2);
+	MapKey(&Throttle, MSL, SRS_1);
+	
+	//Engine operation
+	MapKey(&Throttle, EOLMOTOR, PULSE + Engine_Crank_left);
+	MapKey(&Throttle, EORMOTOR, PULSE + Engine_Crank_right);
+	MapKey(&Throttle, EOLIGN, TEMPO(Engine_Idle_left, Engine_IdleOFF_left, 3000));
+	MapKey(&Throttle, EORIGN, TEMPO(Engine_Idle_right, Engine_IdleOFF_right, 3000));
+	MapKey(&Throttle, APUON, PULSE+APU_switch);
+	
+	//System operation
+	
+	MapKey(&Throttle, CSU, TDC_up);
+	MapKey(&Throttle, CSD, TDC_down);
+	MapKey(&Throttle, CSR, TDC_right);
+	MapKey(&Throttle, CSL, TDC_left);
+	
+	MapKey(&Throttle, LTB, Raid_button);
+	
+	MapKey(&Throttle, BSF, Seat_up);
+	MapKey(&Throttle, BSB, Seat_down);
+	
+	MapKey(&Throttle, CHB, ATC_switch);
+	
+	MapKey(&Throttle, LDGH, TEMPO(MC_reset, Fire_ex, 3000));
+	
+	MapKey(&Throttle, EFLNORM, PULSE + Strobe_brt);
+	MapKey(&Throttle, EFLOVER, PULSE + Strobe_off);
+	
+	MapKey(&Throttle, EFRNORM, PULSE + Ldg_light_on);
+	MapKey(&Throttle, EFROVER, PULSE + Ldg_light_off);
+		
+	//*********************************************
+	//Joystick Key Mappings
+	//*********************************************
+	
+	MapKey(&Joystick, H2R, TDC_depress);
+	MapKey(&Joystick, H2L, Cage_button);
+	
+	//trimmers
+	
+	MapKey(&Joystick, H1U, trm_u);
+	MapKey(&Joystick, H1D, trm_d);
+	MapKey(&Joystick, H1L, trm_l);
+	MapKey(&Joystick, H1R, trm_r);
+	
+	//weapons
+	
+	MapKey(&Joystick, TG1, gun_shot);
+	MapKey(&Joystick, TG2, gun_shot);
+	MapKey(&Joystick, S2, wpn_release);
+	
+	MapKey(&Joystick, H3U, select_fox1);
+	MapKey(&Joystick, H3D, select_fox2);
+	MapKey(&Joystick, H3L, select_gun);
+	MapKey(&Joystick, H3R, select_fox3);
+	
+	//dispenser
+	
+	MapKey(&Joystick, H2U, dispense_fwd);
+	MapKey(&Joystick, H2D, dispense_aft);
+	MapKey(&Joystick, S1, dispense_btn);
+	
+	//systems
+	
+	MapKey(&Joystick, H4U, scs_u);
+	MapKey(&Joystick, H4D, scs_d);
+	MapKey(&Joystick, H4L, scs_l);
+	MapKey(&Joystick, H4R, scs_r);
+	MapKey(&Joystick, H4P, scs_p);
+
+	MapKey(&Joystick, S3, nws);
+	MapKey(&Joystick, S4, TEMPO(track_ir_reset, nws, 1500));
+
+	//*********************************************
+	//LFMD Key Mappings
+	//*********************************************
+	
+	MapKey(&LMFD, GAINU, l_gain_up); 
+	MapKey(&LMFD, GAIND, l_gain_down);
+	
+	MapKey(&LMFD, SYMU, l_sym_up); 
+	MapKey(&LMFD, SYMD, l_sym_down);
+	
+	MapKey(&LMFD, CONU, l_con_up); 
+	MapKey(&LMFD, COND, l_con_down);
+	
+	MapKey(&LMFD, BRTU, l_brt_up); 
+	MapKey(&LMFD, BRTD, l_brt_down);
+	
+	MapKey(&LMFD, OSB01, l_top_1); 
+	MapKey(&LMFD, OSB02, l_top_2); 
+	MapKey(&LMFD, OSB03, l_top_3); 
+	MapKey(&LMFD, OSB04, l_top_4);
+	MapKey(&LMFD, OSB05, l_top_5);
+
+	MapKey(&LMFD, OSB06, track_ir_reset); 
+	MapKey(&LMFD, OSB07, l_rig_2); 
+	MapKey(&LMFD, OSB08, l_rig_3); 
+	MapKey(&LMFD, OSB09, l_rig_4);
+	MapKey(&LMFD, OSB10, l_rig_5);
+	
+	MapKey(&LMFD, OSB11, l_btm_5); 
+	MapKey(&LMFD, OSB12, l_btm_4); 
+	MapKey(&LMFD, OSB13, l_btm_3); 
+	MapKey(&LMFD, OSB14, l_btm_2);
+	MapKey(&LMFD, OSB15, l_btm_1);
+	
+	MapKey(&LMFD, OSB16, l_lft_5); 
+	MapKey(&LMFD, OSB17, l_lft_4); 
+	MapKey(&LMFD, OSB18, l_lft_3); 
+	MapKey(&LMFD, OSB19, l_lft_2);
+	MapKey(&LMFD, OSB20, l_lft_1);
+	//add initialization code here
+}
+
+//event handler
+int EventHandle(int type, alias o, int x)
+{
+    DefaultMapping(&o, x);
+	
+	//add event handling code here
+}

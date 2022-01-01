@@ -1,0 +1,92 @@
+define Comm_1 R_ALT + UARROW
+define Comm_2 R_ALT + DARROW
+define SRS_1 R_ALT + R_SHIFT + UARROW
+define SRS_2 R_ALT + R_SHIFT + DARROW
+
+define Speedbreak_forward L_CTL + 'b'
+define Speedbreak_back L_SHIFT + 'b'
+
+define Seat_up L_CTL + L_SHIFT + 's'
+define Seat_down L_SHIFT + 's'
+
+define ATC_switch L_ALT + L_CTL + L_SHIFT + 't'
+
+define RAID_btn L_CTL + L_SHIFT + 'i'
+
+define TDC_up R_SHIFT + UARROW
+define TDC_down R_SHIFT + DARROW
+define TDC_left R_SHIFT + LARROW
+define TDC_right R_SHIFT + RARROW
+define TDC_depress R_SHIFT + R_CTL + ENT
+define Engine_Crank_left R_ALT + R_CTL + HOME
+define Engine_Crank_right R_CTL + HOME
+define Engine_Idle_left R_ALT + HOME
+define Engine_Idle_right R_SHIFT + HOME
+define Engine_IdleOFF_left R_ALT + R_SHIFT + HOME
+define Engine_IdleOFF_right R_CTL + R_SHIFT + HOME
+
+define APU_switch L_ALT + L_CTL + L_SHIFT + 'a'
+
+define Flaps_auto L_CTL + L_SHIFT + 'f'
+define Flaps_half L_CTL + L_ALT + 'f'
+define Flaps_full L_SHIFT + L_ALT + 'f'
+
+define Cage_button	R_CTL + R_SHIFT + 'c'
+define Raid_button L_CTL + L_SHIFT + 'i'
+
+define Gear_down L_SHIFT + 'g'
+define Gear_up L_CTL + 'g'
+
+define MC_reset R_SHIFT + R_ALT + 'r'
+
+define Hook_up L_SHIFT + 'h'
+define Hook_down L_CTL + 'h'
+
+define Master_arm L_CTL + L_SHIFT + 'a'
+define Master_safe 'a'
+define Master_mode_aa L_ALT + 'a'
+define Master_mode_ag L_ALT + L_SHIFT + 'a'
+
+define Fire_ex L_SHIFT + R_SHIFT + 'f'
+
+define Strobe_off R_ALT + 's'
+define Strobe_dim R_CTL + 's'
+define Strobe_brt R_SHIFT + 's'
+
+define Ldg_light_on L_SHIFT + 'l'
+define Ldg_light_off L_CTL + 'l'
+
+
+define dispense_btn L_ALT + L_CTL + L_SHIFT + 'f'
+define dispense_aft L_ALT + 'f'
+define dispense_fwd L_ALT + L_CTL + 'c'
+
+define gun_shot L_CTL + L_SHIFT + SPC
+define wpn_release L_CTL + ENT
+
+define select_gun '1'
+define select_fox1 '2'
+define select_fox3 '3'
+define select_fox2 '4'
+
+define scs_u R_ALT + ';'
+define scs_d R_ALT + '.'
+define scs_l R_ALT + ','
+define scs_r R_ALT + '/'
+define scs_p R_ALT + ENT
+
+define trm_u R_CTL + ';'
+define trm_d R_CTL + '.'
+define trm_l R_CTL + ','
+define trm_r R_CTL + '/'
+
+define nws L_CTL + 'w'
+define paddle_disengage L_CTL + 'd'
+
+define track_ir_reset R_ALT + '1' 
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 include "target.tmh"
 include "DCS.ttm"
-include "lmfd.ttm"
+include "hardware_ttm/lmfd.ttm"
 
 int throttle_curve;
 
@@ -25,13 +25,13 @@ int main()
 	SetCustomCurve(&Throttle, THR_LEFT, throttle_curve);
 	SetCustomCurve(&Throttle, THR_RIGHT, throttle_curve);
 	
-	SetSCurve(&Throttle, SCX, 0, 5, 0, 0, -10);
-	SetSCurve(&Throttle, SCY, 0, 5, 0, 0, -10);
+	SetSCurve(&Throttle, SCX, 0, 5, 0, 0, -7);
+	SetSCurve(&Throttle, SCY, 0, 5, 0, 0, -7);
 	
 	MapKey(&Throttle, PSB, 
 		EXEC(
-			"SetSCurve(&Joystick, JOYX, 0, 3, 0, 3, -5);"
-			"SetSCurve(&Joystick, JOYY, 0, 3, 0, 3, -5);"
+			"SetSCurve(&Joystick, JOYX, 0, 3, 0, 3, -2);"
+			"SetSCurve(&Joystick, JOYY, 0, 3, 0, 3, -2);"
 		)
 	);
 	
@@ -63,7 +63,7 @@ int main()
 	
 	//Master Arms
 	
-	MapKey(&Throttle, APDIS, TEMPO(Master_safe, Master_arm, 3000));
+	MapKey(&Throttle, APDIS, PULSE + Master_arm);
 	MapKey(&Throttle, APPAT, PULSE + Master_mode_aa);
 	MapKey(&Throttle, APAH, PULSE + Master_safe);
 	MapKey(&Throttle, APALT, PULSE + Master_mode_ag);
@@ -76,11 +76,11 @@ int main()
 	MapKey(&Throttle, MSL, SRS_1);
 	
 	//Engine operation
-	MapKey(&Throttle, EOLMOTOR, PULSE + Engine_Crank_left);
-	MapKey(&Throttle, EORMOTOR, PULSE + Engine_Crank_right);
+	MapKey(&Throttle, EOLMOTOR, Engine_Crank_left);
+	MapKey(&Throttle, EORMOTOR, Engine_Crank_right);
 	MapKey(&Throttle, EOLIGN, TEMPO(Engine_Idle_left, Engine_IdleOFF_left, 3000));
 	MapKey(&Throttle, EORIGN, TEMPO(Engine_Idle_right, Engine_IdleOFF_right, 3000));
-	MapKey(&Throttle, APUON, PULSE+APU_switch);
+	MapKey(&Throttle, APUON, APU_switch);
 	
 	//System operation
 	
@@ -144,47 +144,47 @@ int main()
 	MapKey(&Joystick, H4P, scs_p);
 
 	MapKey(&Joystick, S3, nws);
-	MapKey(&Joystick, S4, TEMPO(track_ir_reset, nws, 1500));
+	MapKey(&Joystick, S4, TEMPO(track_ir_reset, paddle_disengage, 1500));
 
 	//*********************************************
 	//LFMD Key Mappings
 	//*********************************************
 	
-	MapKey(&LMFD, GAINU, l_gain_up); 
-	MapKey(&LMFD, GAIND, l_gain_down);
+	//MapKey(&LMFD, GAINU, l_gain_up); 
+	//MapKey(&LMFD, GAIND, l_gain_down);
 	
 	MapKey(&LMFD, SYMU, l_sym_up); 
 	MapKey(&LMFD, SYMD, l_sym_down);
 	
-	MapKey(&LMFD, CONU, l_con_up); 
-	MapKey(&LMFD, COND, l_con_down);
+	//MapKey(&LMFD, CONU, '7'); 
+	//MapKey(&LMFD, COND, '8');
 	
-	MapKey(&LMFD, BRTU, l_brt_up); 
-	MapKey(&LMFD, BRTD, l_brt_down);
+	//MapKey(&LMFD, BRTU, l_brt_up); 
+	//MapKey(&LMFD, BRTD, l_brt_down);
 	
-	MapKey(&LMFD, OSB01, l_top_1); 
-	MapKey(&LMFD, OSB02, l_top_2); 
-	MapKey(&LMFD, OSB03, l_top_3); 
-	MapKey(&LMFD, OSB04, l_top_4);
-	MapKey(&LMFD, OSB05, l_top_5);
+	//MapKey(&LMFD, OSB01, l_top_1); 
+	//MapKey(&LMFD, OSB02, l_top_2); 
+	//MapKey(&LMFD, OSB03, l_top_3); 
+	//MapKey(&LMFD, OSB04, l_top_4);
+	//MapKey(&LMFD, OSB05, l_top_5);
 
 	MapKey(&LMFD, OSB06, track_ir_reset); 
-	MapKey(&LMFD, OSB07, l_rig_2); 
-	MapKey(&LMFD, OSB08, l_rig_3); 
-	MapKey(&LMFD, OSB09, l_rig_4);
-	MapKey(&LMFD, OSB10, l_rig_5);
+	//MapKey(&LMFD, OSB07, l_rig_2); 
+	//MapKey(&LMFD, OSB08, l_rig_3); 
+	//MapKey(&LMFD, OSB09, l_rig_4);
+	//MapKey(&LMFD, OSB10, l_rig_5);
 	
-	MapKey(&LMFD, OSB11, l_btm_5); 
-	MapKey(&LMFD, OSB12, l_btm_4); 
-	MapKey(&LMFD, OSB13, l_btm_3); 
-	MapKey(&LMFD, OSB14, l_btm_2);
-	MapKey(&LMFD, OSB15, l_btm_1);
+	//MapKey(&LMFD, OSB11, l_btm_5); 
+	//MapKey(&LMFD, OSB12, l_btm_4); 
+	//MapKey(&LMFD, OSB13, l_btm_3); 
+	//MapKey(&LMFD, OSB14, l_btm_2);
+	//MapKey(&LMFD, OSB15, l_btm_1);
 	
-	MapKey(&LMFD, OSB16, l_lft_5); 
-	MapKey(&LMFD, OSB17, l_lft_4); 
-	MapKey(&LMFD, OSB18, l_lft_3); 
-	MapKey(&LMFD, OSB19, l_lft_2);
-	MapKey(&LMFD, OSB20, l_lft_1);
+	//MapKey(&LMFD, OSB16, l_lft_5); 
+	//MapKey(&LMFD, OSB17, l_lft_4); 
+	//MapKey(&LMFD, OSB18, l_lft_3); 
+	//MapKey(&LMFD, OSB19, l_lft_2);
+	//MapKey(&LMFD, OSB20, l_lft_1);
 	//add initialization code here
 }
 

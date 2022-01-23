@@ -1,7 +1,7 @@
 define Comm_1 R_ALT + UARROW
 define Comm_2 R_ALT + DARROW
-define SRS_1 R_ALT + R_SHIFT + UARROW
-define SRS_2 R_ALT + R_SHIFT + DARROW
+define SRS_1 '5'
+define SRS_2 '6'
 
 define Speedbreak_forward L_CTL + 'b'
 define Speedbreak_back L_SHIFT + 'b'
@@ -18,14 +18,14 @@ define TDC_down R_SHIFT + DARROW
 define TDC_left R_SHIFT + LARROW
 define TDC_right R_SHIFT + RARROW
 define TDC_depress R_SHIFT + R_CTL + ENT
-define Engine_Crank_left R_ALT + R_CTL + HOME
-define Engine_Crank_right R_CTL + HOME
+define Engine_Crank_left R_ALT + END
+define Engine_Crank_right R_SHIFT + END
 define Engine_Idle_left R_ALT + HOME
 define Engine_Idle_right R_SHIFT + HOME
-define Engine_IdleOFF_left R_ALT + R_SHIFT + HOME
-define Engine_IdleOFF_right R_CTL + R_SHIFT + HOME
+define Engine_IdleOFF_left R_ALT + DEL 
+define Engine_IdleOFF_right R_SHIFT + DEL
 
-define APU_switch L_ALT + L_CTL + L_SHIFT + 'a'
+define APU_switch R_SHIFT + PGUP
 
 define Flaps_auto L_CTL + L_SHIFT + 'f'
 define Flaps_half L_CTL + L_ALT + 'f'
